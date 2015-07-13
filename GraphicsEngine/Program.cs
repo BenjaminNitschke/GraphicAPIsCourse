@@ -3,7 +3,6 @@ using System.Windows.Forms;
 
 namespace GraphicsEngine
 {
-    //- 3D Cube
     static class Program
     {
         [STAThread]
@@ -29,7 +28,7 @@ namespace GraphicsEngine
             form = new GraphicsEngineForm();
             form.Show();
             graphics = GraphicsAPI == API.OpenGL
-                ? (Graphics)new OpenGLGraphics(form.Handle)
+                ? (Graphics)new OpenGLGraphics(form)
                 : new DirectXGraphics(form);
         }
 
