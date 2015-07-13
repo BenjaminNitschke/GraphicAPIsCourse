@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GraphicsEngine
@@ -8,7 +9,8 @@ namespace GraphicsEngine
         [STAThread]
         static void Main()
         {
-            GraphicsAPI = API.OpenGL;
+            GraphicsAPI = API.DirectX;
+            common = new Common();
             Init();
             while (true)
             {
@@ -22,6 +24,7 @@ namespace GraphicsEngine
         }
 
         public static API GraphicsAPI;
+        public static Common common;
 
         static void Init()
         {

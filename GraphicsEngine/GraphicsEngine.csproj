@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="DirectXGraphics.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="GraphicsEngineForm.cs">
