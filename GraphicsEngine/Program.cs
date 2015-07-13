@@ -1,13 +1,9 @@
-﻿using OpenTK;
-using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL4;
-using OpenTK.Platform;
-using OpenTK.Platform.Windows;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace GraphicsEngine
 {
+    //- 3D Cube
     static class Program
     {
         [STAThread]
@@ -23,6 +19,7 @@ namespace GraphicsEngine
                 graphics.Render();
                 graphics.Present();
             }
+            graphics.Dispose();
         }
 
         public static API GraphicsAPI;
@@ -33,7 +30,7 @@ namespace GraphicsEngine
             form.Show();
             graphics = GraphicsAPI == API.OpenGL
                 ? (Graphics)new OpenGLGraphics(form.Handle)
-                : new DirectXGraphics(form.Handle);
+                : new DirectXGraphics(form);
         }
 
         static Form form;

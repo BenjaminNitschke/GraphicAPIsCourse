@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
+    <Compile Include="DirectXGraphics.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="GraphicsEngineForm.cs">
       <SubType>Form</SubType>
@@ -61,6 +62,7 @@
     <Compile Include="GraphicsEngineForm.Designer.cs">
       <DependentUpon>GraphicsEngineForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpenGLGraphics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GraphicsEngineForm.resx">
