@@ -9,7 +9,7 @@ namespace GraphicsEngine
         [STAThread]
         static void Main()
         {
-            GraphicsAPI = API.DirectX;
+            GraphicsAPI = API.OpenGL4;
             Init();
             while (true)
             {
@@ -33,7 +33,9 @@ namespace GraphicsEngine
             form.Show();
             graphics = GraphicsAPI == API.OpenGL
                 ? (Graphics)new OpenGLGraphics(form)
-                : new DirectXGraphics(form);
+                : GraphicsAPI == API.OpenGL4
+                    ? (Graphics)new OpenGL4Graphics(form)
+                    : (Graphics)new DirectXGraphics(form);
         }
 
         static Form form;
@@ -41,7 +43,11 @@ namespace GraphicsEngine
 
         public static void ToggleAPIAndRestart()
         {
-            GraphicsAPI = GraphicsAPI == API.OpenGL ? API.DirectX : API.OpenGL;
+            GraphicsAPI = GraphicsAPI == API.OpenGL
+                ? API.DirectX
+                : GraphicsAPI == API.DirectX
+                    ? API.OpenGL4
+                    : API.OpenGL;
             form.Close();
             Init();
         }

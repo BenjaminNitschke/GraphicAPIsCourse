@@ -66,5 +66,8 @@ namespace GraphicsEngine
         public const float CameraY = -1.5f;
         public const float CameraZ = -2.5f;
         public const float CameraRotationY = PIThird;
+        public const float LightX = 4;
+        public const float LightY = 2;
+        public const float LightZ = 5;
     }
 }

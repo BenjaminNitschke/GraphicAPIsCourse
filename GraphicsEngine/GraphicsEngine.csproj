@@ -69,6 +69,7 @@
     <Compile Include="GraphicsEngineForm.Designer.cs">
       <DependentUpon>GraphicsEngineForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpenGL4Graphics.cs" />
     <Compile Include="OpenGLGraphics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

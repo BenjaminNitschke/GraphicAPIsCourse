@@ -3,6 +3,7 @@
     public enum API
     {
         OpenGL,
-        DirectX
+        DirectX,
+        OpenGL4
     }
 }

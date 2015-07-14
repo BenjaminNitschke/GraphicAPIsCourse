@@ -82,8 +82,8 @@ namespace GraphicsEngine
                     new InputElement("NORMAL", 0, Format.R32G32B32_Float, 3*4, 0)
                 });
             constantBuffer = new SharpDX.Direct3D11.Buffer(device,
-                128, ResourceUsage.Default, BindFlags.ConstantBuffer,
-                CpuAccessFlags.None, ResourceOptionFlags.None, 0);
+                128, ResourceUsage.Dynamic, BindFlags.ConstantBuffer,
+                CpuAccessFlags.Write, ResourceOptionFlags.None, 0);
             sampler = new SamplerState(device, SamplerStateDescription.Default());
         }
 
@@ -93,6 +93,7 @@ namespace GraphicsEngine
         SharpDX.Direct3D11.Buffer constantBuffer;
         SamplerState sampler;
         Matrix WorldViewProjection;
+        Vector3 LightDirection;
 
         class ShaderCompilationException : Exception
         {
@@ -154,6 +155,8 @@ namespace GraphicsEngine
             Matrix viewMatrix = Matrix.Translation(Common.CameraX, Common.CameraY, Common.CameraZ) *
                 Matrix.RotationY(Common.CameraRotationY);
             WorldViewProjection = viewMatrix * projectionMatrix;
+            LightDirection = new Vector3(Common.LightX, Common.LightY, Common.LightZ);
+            LightDirection.Normalize();
         }
 
         public void Render()
@@ -173,7 +176,14 @@ namespace GraphicsEngine
 
         private void BindShader()
         {
-            Context.UpdateSubresource(ref WorldViewProjection, constantBuffer);
+            DataStream constants;
+            Context.MapSubresource(constantBuffer, MapMode.WriteDiscard,
+                SharpDX.Direct3D11.MapFlags.None, out constants);
+            constants.Seek(0, System.IO.SeekOrigin.Begin);
+            constants.Write(WorldViewProjection);
+            constants.Write(LightDirection);
+            Context.UnmapSubresource(constantBuffer, 0);
+
             Context.VertexShader.Set(vertexShader);
             Context.VertexShader.SetConstantBuffer(0, constantBuffer);
             Context.PixelShader.Set(pixelShader);

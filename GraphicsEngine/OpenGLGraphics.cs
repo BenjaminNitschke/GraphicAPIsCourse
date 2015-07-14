@@ -22,8 +22,8 @@ namespace GraphicsEngine
             GL.ShadeModel(ShadingModel.Smooth);
             GL.Enable(EnableCap.Lighting);
             GL.Light(LightName.Light0, LightParameter.Ambient, new[] {.2f, .2f, .2f, 1.0f});
-            GL.Light(LightName.Light0, LightParameter.Diffuse, new[] {.8f, .8f, .8f, 1.0f});
-            GL.Light(LightName.Light0, LightParameter.Position, new[] {4, 5, 5});
+            GL.Light(LightName.Light0, LightParameter.Diffuse, new[] {1, 1, 1, 1.0f});
+            GL.Light(LightName.Light0, LightParameter.Position, new[] {Common.LightX, Common.LightY, Common.LightZ});
             GL.Enable(EnableCap.Light0);
 
             GL.MatrixMode(MatrixMode.Projection);
