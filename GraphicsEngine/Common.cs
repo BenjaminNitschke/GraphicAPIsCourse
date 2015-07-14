@@ -31,17 +31,17 @@ namespace GraphicsEngine
             indices = new short[NumberOfIndices]
             {
                 // Front face
-                0, 1, 2,   2, 3, 0,
+                0, 2, 1,   2, 0, 3,
                 // Right face
-                4, 5, 6,   6, 7, 4,
+                4, 6, 5,   6, 4, 7,
                 // Top face
-                8, 9,10,  10,11, 8,
+                8, 10,9,   10,8, 11,
                 // Left face
-                12,13,14,  14,15,12,
+                12,14,13,  14,12,15,
                 // Bottom face
-                16,17,18,  18,19,16,
+                16,18,17,  18,16,19,
                 // Back face
-                20,21,22,  22,23,20
+                20,22,21,  22,20,23
             };
         }
 
@@ -55,5 +55,16 @@ namespace GraphicsEngine
         public const int CubeFaces = 6;
         public const int NumberOfIndices = CubeFaces * 2 * 3;
         public short[] indices;
+        public const float PI = (float)Math.PI;
+        public const float PI2 = (float)Math.PI * 2;
+        public const float PIHalf = (float)Math.PI / 2;
+        public const float PIThird = (float)Math.PI / 3;
+        public const float FieldOfView = PI / 2;
+        public const float NearPlane = 0.1f;
+        public const float FarPlane = 100.0f;
+        public const float CameraX = 3;
+        public const float CameraY = -1.5f;
+        public const float CameraZ = -2.5f;
+        public const float CameraRotationY = PIThird;
     }
 }

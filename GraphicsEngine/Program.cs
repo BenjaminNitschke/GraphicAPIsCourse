@@ -10,7 +10,6 @@ namespace GraphicsEngine
         static void Main()
         {
             GraphicsAPI = API.DirectX;
-            common = new Common();
             Init();
             while (true)
             {
@@ -28,7 +27,9 @@ namespace GraphicsEngine
 
         static void Init()
         {
+            common = new Common();
             form = new GraphicsEngineForm();
+            form.Text += " - " + GraphicsAPI;
             form.Show();
             graphics = GraphicsAPI == API.OpenGL
                 ? (Graphics)new OpenGLGraphics(form)
@@ -37,5 +38,12 @@ namespace GraphicsEngine
 
         static Form form;
         static Graphics graphics;
+
+        public static void ToggleAPIAndRestart()
+        {
+            GraphicsAPI = GraphicsAPI == API.OpenGL ? API.DirectX : API.OpenGL;
+            form.Close();
+            Init();
+        }
     }
 }

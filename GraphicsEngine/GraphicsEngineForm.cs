@@ -16,6 +16,8 @@ namespace GraphicsEngine
         {
             if (e.KeyCode == Keys.Escape)
                 Close();
+            if (e.KeyCode == Keys.Space)
+                Program.ToggleAPIAndRestart();
             base.OnKeyDown(e);
         }
     }
